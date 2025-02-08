@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You be My Valantine💖</title>
+</head>
+<style>
+    body {
+        width: 98%;
+        height: 97vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8d1e4;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    button {
+        height: fit-content; 
+        width: fit-content; 
+        padding: 0.5rem 1rem;
+        font-size: 15px;
+        border-radius: 0.4rem;
+        text-align: center;
+        margin-right: 1rem;
+        cursor: pointer;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    h1 {
+        color: #d63384;
+    }
+
+    .yes{
+        background-color: #2eec81;
+    }
+
+    .no {
+        background-color: rgb(252, 27, 27);
+    }
+
+    img {
+        height: 200px;
+        width: 200px;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div><h1>Will You be My Valantine💖</h1></div>
+        <div>
+            <a href="./yes_page.html"><button class="yes">Yes</button></a>
+            <button class="no" onclick=handleNoClick()>No</button>
+        </div>
+        <div>
+            <img src="./pookie_1.webp" alt="none">
+        </div>
+    </div>
+</body>
+<script>
+    const messages = [
+            "Are you sure?",
+            "Really sure??",
+            "Pookie please...",
+            "Just think about it!",
+            "If you say no, I will be really sad...",
+            "I will be very sad...",
+            "Ok fine, I will stop asking...",
+        ];
+
+        let messageIndex = 0;
+
+        function handleNoClick() {
+            const noButton = document.querySelector('.no');
+            const yesButton = document.querySelector('.yes');
+            if(messageIndex < messages.length) {
+                noButton.textContent = messages[messageIndex];
+                messageIndex = messageIndex + 1;
+                const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+                yesButton.style.fontSize = `${currentSize * 1.5}px`;
+            } else {
+                noButton.textContent = "Just kidding, say yes please! 💌"
+                const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+                const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+                noButton.style.position = "absolute";
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+            }
+        }
+</script>
+</html>

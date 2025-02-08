@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lob U</title>
+</head>
+<style>
+    body {
+        width: 98%;
+        height: 97vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8d1e4;
+        flex-direction: column;
+        overflow: hidden;
+        position: absolute;
+    }
+
+    .heading {
+        font-family: Arial, sans-serif;
+        color: #d63384;
+    }
+
+    .heart {
+        position: absolute;
+        color: red;
+        font-size: 24px;
+        z-index: -1;
+        animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-10vh) translateX(0);
+            opacity: 1;
+        }
+
+        25% {
+            transform: translateY(25vh) translateX(20px);
+        }
+
+        50% {
+            transform: translateY(50vh) translateX(-20px);
+        }
+
+        75% {
+            transform: translateY(75vh) translateX(20px);
+        }
+
+        100% {
+            transform: translateY(90vh) translateX(0);
+            opacity: 0;
+        }
+    }
+</style>
+
+<body>
+    <div class="heading">
+        <h1>Knew You would say Yes!</h1>
+    </div>
+    <div>
+        <img src="./pookie_2.webp" alt="none">
+    </div>
+</body>
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        document.body.appendChild(heart);
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-5vh";
+
+        let fallDuration = Math.random() * 5 + 4;
+        heart.style.animation = `fall ${fallDuration}s linear forwards`;
+        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+        setTimeout(() => {
+            heart.remove();
+        }, fallDuration * 1000);
+    }
+
+    setInterval(createHeart, 500);
+</script>
+
+</html>
